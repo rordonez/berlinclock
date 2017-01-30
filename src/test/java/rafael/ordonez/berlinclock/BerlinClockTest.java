@@ -41,8 +41,16 @@ public class BerlinClockTest {
 
         BerlinClock berlinClock = new BerlinClock(hour, null, SECOND_ZERO);
 
-        Assert.assertThat("Should be 2 for 10am", "2", is(getLine(berlinClock.toString(), 2)));
+        Assert.assertThat("First line Should be 2 for 10am", "2", is(getLine(berlinClock.toString(), 2)));
     }
 
+    @Test
+    public void secondLineShouldDenoteFullHourFields() throws Exception {
+        int hour = 22;
 
+        BerlinClock berlinClock = new BerlinClock(hour, null, ONE_SECOND);
+
+        Assert.assertThat("First line should be 4 for 9pm", "4", is(getLine(berlinClock.toString(), 2)));
+        Assert.assertThat("Second line should be 2 for 9pm", "2", is(getLine(berlinClock.toString(), 3)));
+    }
 }
