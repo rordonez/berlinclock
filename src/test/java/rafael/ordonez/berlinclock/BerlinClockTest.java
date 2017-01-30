@@ -62,4 +62,14 @@ public class BerlinClockTest {
 
         Assert.assertThat("Third line should be 8 for 43 seconds", "8", is(getLine(berlinClock.toString(), 4)));
     }
+
+    @Test
+    public void fourthLineShouldDenoteFullMinuteFieldsCounter() throws Exception {
+        int minutes = 43;
+
+        BerlinClock berlinClock = new BerlinClock(0, minutes, SECOND_ZERO);
+
+        Assert.assertThat("Third line should be 8 for 43 seconds", "8", is(getLine(berlinClock.toString(), 4)));
+        Assert.assertThat("Fourth line should be 3 for 43 seconds", "3", is(getLine(berlinClock.toString(), 5)));
+    }
 }
