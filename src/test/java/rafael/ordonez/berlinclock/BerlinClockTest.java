@@ -72,4 +72,13 @@ public class BerlinClockTest {
         Assert.assertThat("Third line should be 8 for 43 seconds", "(YELLOW ON)(YELLOW ON)(RED ON)(YELLOW ON)(YELLOW ON)(RED ON)(YELLOW ON)(YELLOW ON)(RED OFF)(YELLOW OFF)(YELLOW OFF)", is(getLine(berlinClock.toString(), 4)));
         Assert.assertThat("Fourth line should be 3 for 43 seconds", "(YELLOW ON)(YELLOW ON)(YELLOW ON)(YELLOW OFF)", is(getLine(berlinClock.toString(), 5)));
     }
+
+    @Test
+    public void fourthLineShouldDenoteFullMinuteFieldssCounter() throws Exception {
+
+        BerlinClock berlinClock = new BerlinClock(21, 45, 13);
+
+        System.out.println(berlinClock.toString());
+    }
+
 }
