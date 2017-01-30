@@ -17,7 +17,7 @@ public class BerlinClockTest {
     public void topLampShouldBeOnWhenSecondsIsEven() throws Exception {
         int seconds = SECOND_ZERO;
 
-        BerlinClock berlinClock = new BerlinClock(0, null, seconds);
+        BerlinClock berlinClock = new BerlinClock(0, 0, seconds);
 
         Assert.assertThat("Top lamp should be ON", TopLamp.ON.name(), is(getLine(berlinClock.toString(), 1)));
     }
@@ -30,7 +30,7 @@ public class BerlinClockTest {
     public void topLampShouldBeOffWhenSecondsIsOdd() throws Exception {
         int seconds = ONE_SECOND;
 
-        BerlinClock berlinClock = new BerlinClock(0, null, seconds);
+        BerlinClock berlinClock = new BerlinClock(0, 0, seconds);
 
         Assert.assertThat("Top lamp should be OFF", TopLamp.OFF.name(), is(getLine(berlinClock.toString(), 1)));
     }
@@ -39,7 +39,7 @@ public class BerlinClockTest {
     public void firstLineShouldDenoteFiveFullHourCounter() throws Exception {
         int hour = 10;
 
-        BerlinClock berlinClock = new BerlinClock(hour, null, SECOND_ZERO);
+        BerlinClock berlinClock = new BerlinClock(hour, 0, SECOND_ZERO);
 
         Assert.assertThat("First line Should be 2 for 10am", "2", is(getLine(berlinClock.toString(), 2)));
     }
@@ -48,9 +48,18 @@ public class BerlinClockTest {
     public void secondLineShouldDenoteFullHourFields() throws Exception {
         int hour = 22;
 
-        BerlinClock berlinClock = new BerlinClock(hour, null, ONE_SECOND);
+        BerlinClock berlinClock = new BerlinClock(hour, 0, ONE_SECOND);
 
         Assert.assertThat("First line should be 4 for 9pm", "4", is(getLine(berlinClock.toString(), 2)));
         Assert.assertThat("Second line should be 2 for 9pm", "2", is(getLine(berlinClock.toString(), 3)));
+    }
+
+    @Test
+    public void thirdLineShouldDenoteFiveFullMinuteCounter() throws Exception {
+        int minutes = 43;
+
+        BerlinClock berlinClock = new BerlinClock(0, minutes, SECOND_ZERO);
+
+        Assert.assertThat("Third line should be 8 for 43 seconds", "8", is(getLine(berlinClock.toString(), 4)));
     }
 }

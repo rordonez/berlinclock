@@ -14,11 +14,13 @@ public class BerlinClock {
     private final TopLamp topLamp;
     private final int fiveHourFieldsCount;
     private final int fullHourFieldsCount;
+    private final int fiveMinuteFieldsCount;
 
-    public BerlinClock(int hour, Object o1, int seconds) {
+    public BerlinClock(int hour, int minutes, int seconds) {
         this.topLamp = TopLamp.values()[moduleOfTwo.apply(seconds)];
         this.fiveHourFieldsCount = divideByFive.apply(hour);
         this.fullHourFieldsCount = moduleOfFive.apply(hour);
+        this.fiveMinuteFieldsCount = divideByFive.apply(minutes);
     }
 
     BiFunction<Integer, Integer, Integer> module = (x, y) -> x % y;
@@ -33,6 +35,7 @@ public class BerlinClock {
                 .add(topLamp.name())
                 .add(String.valueOf(fiveHourFieldsCount))
                 .add(String.valueOf(fullHourFieldsCount))
+                .add(String.valueOf(fiveMinuteFieldsCount))
                 .toString();
     }
 }
