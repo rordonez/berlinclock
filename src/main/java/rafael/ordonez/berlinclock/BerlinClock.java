@@ -9,16 +9,19 @@ public class BerlinClock {
 
     public static final String LINE_SEPARATOR = System.getProperty("line.separator");
 
-    private TopLamp topLamp;
+    private final TopLamp topLamp;
+    private final int firstLine;
 
-    public BerlinClock(Object o, Object o1, int seconds) {
+    public BerlinClock(int hour, Object o1, int seconds) {
         this.topLamp = TopLamp.values()[seconds];
+        this.firstLine = hour / 5;
     }
 
     @Override
     public String toString() {
         return new StringJoiner(LINE_SEPARATOR)
                 .add(topLamp.name())
+                .add(String.valueOf(firstLine))
                 .toString();
     }
 }
