@@ -11,6 +11,7 @@ import static org.hamcrest.CoreMatchers.is;
 public class BerlinClockTest {
 
     public static final int SECOND_ZERO = 0;
+    private static final int ONE_SECOND = 1;
 
     @Test
     public void topLampShouldBeOnWhenSecondsIsEven() throws Exception {
@@ -18,6 +19,15 @@ public class BerlinClockTest {
 
         BerlinClock berlinClock = new BerlinClock(null, null, seconds);
 
-        Assert.assertThat("Top lamp should be ON", "ON", is(berlinClock.toString()));
+        Assert.assertThat("Top lamp should be ON", TopLamp.ON.name(), is(berlinClock.toString()));
+    }
+
+    @Test
+    public void topLampShouldBeOffWhenSecondIsOdd() throws Exception {
+        int seconds = ONE_SECOND;
+
+        BerlinClock berlinClock = new BerlinClock(null, null, seconds);
+
+        Assert.assertThat("Top lamp should be OFF", TopLamp.OFF.name(), is(berlinClock.toString()));
     }
 }

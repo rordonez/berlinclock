@@ -9,13 +9,20 @@ public class BerlinClock {
 
     public static final String LINE_SEPARATOR = System.getProperty("line.separator");
 
+    private TopLamp topLamp;
+
     public BerlinClock(Object o, Object o1, int seconds) {
+        this.topLamp = TopLamp.values()[seconds];
     }
 
     @Override
     public String toString() {
         return new StringJoiner(LINE_SEPARATOR)
-                .add("ON")
+                .add(topLamp.name())
                 .toString();
     }
+}
+
+enum TopLamp {
+    ON, OFF
 }
