@@ -60,7 +60,7 @@ public class BerlinClockTest {
 
         BerlinClock berlinClock = new BerlinClock(0, minutes, EVEN_SECOND);
 
-        Assert.assertThat("Third line should be 8 for 43 seconds", "8", is(getLine(berlinClock.toString(), 4)));
+        Assert.assertThat("Third line should be 8 for 43 seconds", "(YELLOW ON)(YELLOW ON)(RED ON)(YELLOW ON)(YELLOW ON)(RED ON)(YELLOW ON)(YELLOW ON)(RED OFF)(YELLOW OFF)(YELLOW OFF)", is(getLine(berlinClock.toString(), 4)));
     }
 
     @Test
@@ -69,7 +69,7 @@ public class BerlinClockTest {
 
         BerlinClock berlinClock = new BerlinClock(0, minutes, EVEN_SECOND);
 
-        Assert.assertThat("Third line should be 8 for 43 seconds", "8", is(getLine(berlinClock.toString(), 4)));
-        Assert.assertThat("Fourth line should be 3 for 43 seconds", "3", is(getLine(berlinClock.toString(), 5)));
+        Assert.assertThat("Third line should be 8 for 43 seconds", "(YELLOW ON)(YELLOW ON)(RED ON)(YELLOW ON)(YELLOW ON)(RED ON)(YELLOW ON)(YELLOW ON)(RED OFF)(YELLOW OFF)(YELLOW OFF)", is(getLine(berlinClock.toString(), 4)));
+        Assert.assertThat("Fourth line should be 3 for 43 seconds", "(YELLOW ON)(YELLOW ON)(YELLOW ON)(YELLOW OFF)", is(getLine(berlinClock.toString(), 5)));
     }
 }
